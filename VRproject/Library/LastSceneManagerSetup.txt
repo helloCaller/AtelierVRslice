@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/VRscene.unity
+- path: Assets/ForClassTestSetup.unity
   isLoaded: 1
   isActive: 1
