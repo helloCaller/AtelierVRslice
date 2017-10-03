@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ForClassTestSetup.unity
+- path: Assets/OurScene/LittleMenagerie.unity
   isLoaded: 1
   isActive: 1
