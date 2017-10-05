@@ -13,16 +13,6 @@ public class Spawn : MonoBehaviour {
 	public GameObject personModel;
 	public GameObject roofBlock;
 
-<<<<<<< HEAD
-	public void ApartmentOne(){
-
-		var mousePos = Input.mousePosition;
-		mousePos.z = 300;
-
-		var objectPos = Camera.main.ScreenToWorldPoint(mousePos);
-
-		Instantiate(apartmentBlockOne, objectPos, Quaternion.identity);
-=======
 	public GameObject controller; 
 
 	public void ApartmentOne(){
@@ -33,7 +23,6 @@ public class Spawn : MonoBehaviour {
 		var objectPos = Camera.main.ScreenToWorldPoint(mousePos);*/
 
 		Instantiate(apartmentBlockOne, controller.transform.position , Quaternion.identity);
->>>>>>> origin/master
 			
 	}
 
