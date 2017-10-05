@@ -51,6 +51,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Day Night Cycle\Scripts\DayNightController.cs" />
+     <Compile Include="Assets\Day Night Cycle\Scripts\DemoScripts\RoatateCamera.cs" />
+     <Compile Include="Assets\Meshinator\Scripts\Core\HelperScripts\Hull.cs" />
+     <Compile Include="Assets\Meshinator\Scripts\Core\HelperScripts\SubHull.cs" />
+     <Compile Include="Assets\Meshinator\Scripts\Core\Meshinator.cs" />
+     <Compile Include="Assets\Meshinator\Scripts\Utility\Camera\MainCamera.cs" />
+     <Compile Include="Assets\Meshinator\Scripts\Utility\Multithreading\ThreadManager.cs" />
      <Compile Include="Assets\OculusPlatform\Scripts\AchievementType.cs" />
      <Compile Include="Assets\OculusPlatform\Scripts\AndroidPlatform.cs" />
      <Compile Include="Assets\OculusPlatform\Scripts\BufferedAudioStream.cs" />
@@ -149,6 +156,10 @@
      <Compile Include="Assets\OSPNative\scripts\ONSPAmbisonicsNative.cs" />
      <Compile Include="Assets\OSPNative\scripts\ONSPAudioSource.cs" />
      <Compile Include="Assets\OSPNative\scripts\ONSPVersion.cs" />
+     <Compile Include="Assets\OurScripts\ButtonClick.cs" />
+     <Compile Include="Assets\OurScripts\clickMe.cs" />
+     <Compile Include="Assets\OurScripts\ClickRegistration.cs" />
+     <Compile Include="Assets\OurScripts\Spawn.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRBoundary.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCameraRig.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCommon.cs" />
@@ -308,6 +319,7 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
+     <Compile Include="Assets\TinyFire VFX\LightControl.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
      <Compile Include="Assets\VRSampleScenes\Scripts\Common\SessionData.cs" />
      <Compile Include="Assets\VRSampleScenes\Scripts\Examples\ExampleInteractiveItem.cs" />
@@ -621,6 +633,7 @@
      <Compile Include="Assets\VRTK\SDK\Ximmerse\SDK_XimmerseDefines.cs" />
      <Compile Include="Assets\VRTK\SDK\Ximmerse\SDK_XimmerseHeadset.cs" />
      <Compile Include="Assets\VRTK\SDK\Ximmerse\SDK_XimmerseSystem.cs" />
+     <Compile Include="Assets\wanderingNPC.cs" />
      <None Include="Assets\OvrAvatar\Content\Materials\AvatarMaterialStateShader.cginc" />
      <None Include="Assets\OSPNative\THIRD_PARTY_NOTICES.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
@@ -632,6 +645,7 @@
      <None Include="Assets\VRSampleScenes\Shaders\UnlitTransparentParam.shader" />
      <None Include="Assets\OVR\Shaders\OVRColorRampAlpha.shader" />
      <None Include="Assets\OvrAvatar\Content\Materials\AvatarSurfaceShader.shader" />
+     <None Include="Assets\Day Night Cycle\ReadMe.txt" />
      <None Include="Assets\VRTK\Scripts\Internal\Shaders\UIOverlay.shader" />
      <None Include="Assets\SteamVR\InteractionSystem\Teleport\Shaders\Highlight.shader" />
      <None Include="Assets\VRTK\Scripts\Internal\Shaders\VRTK_OutlineBasic.shader" />
