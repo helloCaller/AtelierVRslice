@@ -403,6 +403,17 @@ namespace VRTK
         /// </summary>
         public event ControllerInteractionEventHandler StartMenuReleased;
 
+		////////
+		/// 
+		/// 
+		///
+		Collision collision;
+		bool collide = false;
+		///
+		///
+		///
+		/////////
+
         /// <summary>
         /// Emitted when the pointer toggle alias button is pressed.
         /// </summary>
@@ -1065,6 +1076,11 @@ namespace VRTK
             ButtonAliasEventSubscription(true, givenButton, startEvent, callbackMethod);
         }
 
+		void Collide(){
+			collide = true;
+
+		}
+
         /// <summary>
         /// The UnsubscribeToButtonAliasEvent method makes it easier to unsubscribe to from button event on either the start or end action.
         /// </summary>
@@ -1120,6 +1136,7 @@ namespace VRTK
         {
             VRTK_ControllerReference controllerReference = VRTK_ControllerReference.GetControllerReference(gameObject);
 
+
             //Only continue if the controller reference is valid
             if (!VRTK_ControllerReference.IsValid(controllerReference))
             {
@@ -1129,7 +1146,7 @@ namespace VRTK
             Vector2 currentTriggerAxis = VRTK_SDK_Bridge.GetControllerAxis(SDK_BaseController.ButtonTypes.Trigger, controllerReference);
             Vector2 currentGripAxis = VRTK_SDK_Bridge.GetControllerAxis(SDK_BaseController.ButtonTypes.Grip, controllerReference);
             Vector2 currentTouchpadAxis = VRTK_SDK_Bridge.GetControllerAxis(SDK_BaseController.ButtonTypes.Touchpad, controllerReference);
-
+			Debug.Log (currentTriggerAxis.x);
             //Trigger Touched
             if (VRTK_SDK_Bridge.GetControllerButtonState(SDK_BaseController.ButtonTypes.Trigger, SDK_BaseController.ButtonPressTypes.TouchDown, controllerReference))
             {
@@ -1149,6 +1166,19 @@ namespace VRTK
             {
                 OnTriggerPressed(SetControllerEvent(ref triggerPressed, true, currentTriggerAxis.x));
                 EmitAlias(ButtonAlias.TriggerPress, true, currentTriggerAxis.x, ref triggerPressed);
+
+				/////////////
+				/// /////////
+
+				if (currentTriggerAxis.x >= 0.9f && collide == true) {
+					GameObject.Find ("handRight").SendMessage ("Crumple");
+					GameObject.Find ("handLeft").SendMessage ("Crumple");
+					collide = false;
+				}
+
+
+				/////////////
+				/// /////////
             }
 
             //Trigger Clicked
@@ -1221,11 +1251,26 @@ namespace VRTK
             {
                 OnGripClicked(SetControllerEvent(ref gripClicked, true, currentGripAxis.x));
                 EmitAlias(ButtonAlias.GripClick, true, currentGripAxis.x, ref gripClicked);
+
+				/////////////
+				/// /////////
+
+				if (currentGripAxis.x >= 0.9f && collide == true) {
+					GameObject.Find ("handRight").SendMessage ("Crumple");
+					GameObject.Find ("handLeft").SendMessage ("Crumple");
+					collide = false;
+				}
+
+
+				/////////////
+				/// /////////
             }
             else if (gripClicked && currentGripAxis.x < gripClickThreshold)
             {
                 OnGripUnclicked(SetControllerEvent(ref gripClicked, false, 0f));
                 EmitAlias(ButtonAlias.GripClick, false, 0f, ref gripClicked);
+
+
             }
 
             // Grip Pressed End
@@ -1848,6 +1893,8 @@ namespace VRTK
                 }
             }
         }
+
+
 #pragma warning restore 0618
 
         protected virtual void DisableEvents()

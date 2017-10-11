@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Day Night Cycle\Scripts\DayNightController.cs" />
      <Compile Include="Assets\Day Night Cycle\Scripts\DemoScripts\RoatateCamera.cs" />
+     <Compile Include="Assets\HitMe.cs" />
      <Compile Include="Assets\Meshinator\Scripts\Core\HelperScripts\Hull.cs" />
      <Compile Include="Assets\Meshinator\Scripts\Core\HelperScripts\SubHull.cs" />
      <Compile Include="Assets\Meshinator\Scripts\Core\Meshinator.cs" />
