@@ -27,6 +27,10 @@ public class HitMe : MonoBehaviour {
 
 		
 	}
+	void Crumple(){
+		crumple = true;
+		Debug.Log ("crumple heard");
+	}
 
 	void OnCollisionEnter(Collision collision)
 	{    
@@ -44,8 +48,5 @@ public class HitMe : MonoBehaviour {
 		}        
 	}
 
-	void Crumple(){
-		crumple = true;
-		Debug.Log ("crumple heard");
-	}
+
 }
