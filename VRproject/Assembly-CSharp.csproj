@@ -162,6 +162,7 @@
      <Compile Include="Assets\OurScripts\ClickRegistration.cs" />
      <Compile Include="Assets\OurScripts\ObjectSpawn.cs" />
      <Compile Include="Assets\OurScripts\Spawn.cs" />
+     <Compile Include="Assets\OurScripts\windowLights.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRBoundary.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCameraRig.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRCommon.cs" />

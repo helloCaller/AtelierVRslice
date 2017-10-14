@@ -30,10 +30,17 @@ public class DayNightController : MonoBehaviour {
 	//camera to follow
 	public Camera cameraToFollow;
 
+
+	GameObject[] iHaveLights;
+
+
  	// Use this for initialization
 	void Start () {
 		//set the start time
 		currentTime = startTime;
+
+		iHaveLights = GameObject.FindGameObjectsWithTag("iHaveLights");
+
 	}
 	
 	// Update is called once per frame
@@ -73,8 +80,23 @@ public class DayNightController : MonoBehaviour {
 		//This basically turn on and off the sun light based on day / night
 		if (controlIntensity && sunLight && (currentTime >= 18.0f || currentTime <= 5.5f)) {
 			sunLight.intensity = Mathf.MoveTowards(sunLight.intensity,0.0f,Time.deltaTime*daySpeedMultiplier*10.0f);
+			//EDIT
+
+			for (int i = 0; i <= iHaveLights.Length; i++) {
+				iHaveLights[i].SendMessage ("LightsOn");
+			}
+
 		} else if (controlIntensity && sunLight) {
 			sunLight.intensity = Mathf.MoveTowards(sunLight.intensity,1.0f,Time.deltaTime*daySpeedMultiplier*10.0f);
+
+
+			///EDIT
+			///
+			for (int i = 0; i <= iHaveLights.Length; i++) {
+				iHaveLights[i].SendMessage ("LightsOff");
+			}
+
+
 		}
 
 	}
