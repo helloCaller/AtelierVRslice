@@ -10,12 +10,22 @@ public class HitMe : MonoBehaviour {
 	float origamix;
 	float origamiy;
 
-	bool crumple = false;
+	bool crumpleConfirmation = false;
+	string myName;
 
-
+	float LeftRight;
+	 
 
 	// Use this for initialization
 	void Start () {
+		myName = this.name;
+
+		if (myName == "Right") {
+			LeftRight = 1.0f;
+		} else {
+			LeftRight = 0.0f;
+		}
+			
 
 	}
 
@@ -28,22 +38,24 @@ public class HitMe : MonoBehaviour {
 
 	}
 	void Crumple(){
-		crumple = true;
+		crumpleConfirmation = true;
 		Debug.Log ("crumple heard");
 	}
 
+
+
 	void OnCollisionEnter(Collision collision)
 	{    
-		GameObject.Find ("LeftController").SendMessage ("Collide");
-		GameObject.Find ("RightController").SendMessage ("Collide");
-		if(collision.collider.gameObject.name != null && crumple == true)        
+		GameObject.Find (myName + "Controller").SendMessage ("Collide", LeftRight);
+
+		if(collision.collider.gameObject.name != null && crumpleConfirmation && collision.collider.gameObject.name != "Floor" && collision.collider.gameObject.name != "Right" && collision.collider.gameObject.name != "Left")        
 		{
 			Debug.Log (collision.collider.gameObject.name);
 			origami = GameObject.Find (collision.collider.gameObject.name);
 			origamix = origami.transform.localScale.x;
 			origamiy = origami.transform.localScale.y;
 			origami.transform.localScale = new Vector3(origamix, origamiy, 0.5f);
-			crumple = false;
+			crumpleConfirmation = false;
 
 		}        
 	}

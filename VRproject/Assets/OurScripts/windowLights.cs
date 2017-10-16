@@ -5,9 +5,9 @@ using UnityEngine;
 public class windowLights : MonoBehaviour {
 
 	bool LightsON = false;
-	public Shader shader1;
 
-	public Renderer rend;
+
+	private Renderer rend;
 	float gradual = 1.00f;
 	float random;
 	float wait = 0;
@@ -43,7 +43,7 @@ public class windowLights : MonoBehaviour {
 
 
 				wait += 0.01f;
-			Debug.Log (wait);
+
 
 			if (wait >= random) {
 				if (gradual >= 0.08f) {
@@ -51,7 +51,7 @@ public class windowLights : MonoBehaviour {
 				}
 
 				lerpedColour = Color.Lerp (Color.yellow, Color.black, gradual);
-				Debug.Log ("!!!!!!!!!" + gradual);
+
 				window.SetColor ("_EmissionColor", lerpedColour);
 			}
 			

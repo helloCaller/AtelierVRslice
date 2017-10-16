@@ -62,17 +62,17 @@ public class Meshinator : MonoBehaviour
 
 	// Subtracted from the force of an impact before any deformation is done. If the force becomes negative
 	// due to this, no deformation will occur (the material resisted the impact).
-	public float m_ForceResistance = 10f;
+	private float m_ForceResistance = 50f;
 	
 	// This is the maximum force that can affect a mesh on any given impact. Any force beyond this amount is
 	// negated. If m_MaxForcePerImpact is less than or equal to m_ForceResistance, then no impact will ever
 	// deform this GameObject's mesh.
-	public float m_MaxForcePerImpact = 12f;
+	private float m_MaxForcePerImpact = 12f;
 	
 	// Multiplied by the force of an impact to determine the depth of an impact/explosion/etc. Higher
 	// values indicate less dense materials (and thus more deformation), while smaller values indicate
 	// more dense materials (and thus less deformation).
-	public float m_ForceMultiplier = 0.25f;
+	private float m_ForceMultiplier = 0.25f;
 	
 	// Is an impact currently being calculated? If so, we'll end up ignoring other Impact calls to prevent
 	// concurrent modifications to the mesh.

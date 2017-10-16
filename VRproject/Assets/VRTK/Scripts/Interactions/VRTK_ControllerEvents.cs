@@ -409,6 +409,7 @@ namespace VRTK
 		///EDIT
 
 		bool collide = false;
+		String hand;
 		///
 		///
 		///
@@ -1080,8 +1081,14 @@ namespace VRTK
 		/// EDIT
 		/// </summary>
 
-		void Collide(){
+		void Collide(float myName){
 			collide = true;
+			if(myName == 1.0f){
+				hand = "Right";
+			} else {
+				hand = "Left";
+			}
+			Debug.Log (myName);
 
 		}
 
@@ -1138,6 +1145,8 @@ namespace VRTK
 
 		protected virtual void Update()
 		{
+
+
 			VRTK_ControllerReference controllerReference = VRTK_ControllerReference.GetControllerReference(gameObject);
 
 
@@ -1151,6 +1160,19 @@ namespace VRTK
 			Vector2 currentGripAxis = VRTK_SDK_Bridge.GetControllerAxis(SDK_BaseController.ButtonTypes.Grip, controllerReference);
 			Vector2 currentTouchpadAxis = VRTK_SDK_Bridge.GetControllerAxis(SDK_BaseController.ButtonTypes.Touchpad, controllerReference);
 			//			Debug.Log (currentTriggerAxis);
+
+			////EDIT
+			/// ////
+			if (currentTriggerAxis.x >= 0.6f && collide) {
+				Debug.Log ("click");
+				collide = false;
+				GameObject.Find (hand).SendMessage ("Crumple");
+			
+			}
+			////
+			/// ///
+			/// 
+			/// /
 			//Trigger Touched
 			if (VRTK_SDK_Bridge.GetControllerButtonState(SDK_BaseController.ButtonTypes.Trigger, SDK_BaseController.ButtonPressTypes.TouchDown, controllerReference))
 			{
@@ -1171,18 +1193,19 @@ namespace VRTK
 				OnTriggerPressed(SetControllerEvent(ref triggerPressed, true, currentTriggerAxis.x));
 				EmitAlias(ButtonAlias.TriggerPress, true, currentTriggerAxis.x, ref triggerPressed);
 
-				/////////////
-				/// /////////EDIT
-
-				if (currentTriggerAxis.x >= 0.6f && collide == true) {
-					GameObject.Find ("handRight").SendMessage ("Crumple");
-					GameObject.Find ("handLeft").SendMessage ("Crumple");
-					collide = false;
-				}
-
-
-				/////////////
-				/// /////////
+//				/////////////
+//				/// /////////EDIT
+//				Debug.Log("press");
+////				if (currentTriggerAxis.x >= 0.8f && collide == true) {
+//				if(collide){
+//					GameObject.Find ("handRight").SendMessage ("Crumple");
+//					GameObject.Find ("handLeft").SendMessage ("Crumple");
+//					collide = false;
+//				}
+//
+//
+//				/////////////
+//				/// /////////
 			}
 
 			//Trigger Clicked
@@ -1190,6 +1213,8 @@ namespace VRTK
 			{
 				OnTriggerClicked(SetControllerEvent(ref triggerClicked, true, currentTriggerAxis.x));
 				EmitAlias(ButtonAlias.TriggerClick, true, currentTriggerAxis.x, ref triggerClicked);
+				
+
 			}
 			else if (triggerClicked && currentTriggerAxis.x < triggerClickThreshold)
 			{
